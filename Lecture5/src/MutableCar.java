@@ -14,6 +14,7 @@ public class MutableCar {
 
 	private int horizontalSpeed = 0;  // Car speed in pixels per second
 	private int horizontalDirection;
+	private int number;
 
 
 	public MutableCar(double x, double y) {
@@ -31,12 +32,13 @@ public class MutableCar {
 		horizontalDirection = 1;  // Initially moving right
 	}
 
-	public MutableCar(double x, double y, Color color, int hSpeed, int HDir) {
+	public MutableCar(double x, double y, Color color, int hSpeed, int HDir, int number) {
 		this.xPos = x;
 		this.yPos = y;
 		this.color = color;
 		horizontalSpeed = hSpeed;
 		horizontalDirection = HDir;
+		this.number = number;
 	}
 
 	public Color getColor() {
@@ -75,6 +77,16 @@ public class MutableCar {
 		this.horizontalDirection = horizontalDirection;
 	}
 
+	public void moveInX(double deltaX) {
+		this.xPos += deltaX;
+	}
+	
+	public void moveInY(double deltaY) {
+		this.yPos += deltaY;
+	}
+	
+	
+	
 	public void draw(Graphics g) {
 
 		Graphics2D g2 = (Graphics2D) g;
@@ -120,7 +132,7 @@ public class MutableCar {
 			g2.fill(rightLight);
 		}
 		
-		g2.setColor(Color.WHITE);
-		g2.drawString("0", Math.round(this.getXPos())+25, Math.round(this.getYPos())+20);
+		g2.setColor(Color.BLACK);
+		g2.drawString((this.number) + "", Math.round(this.getXPos())+25, Math.round(this.getYPos())+20);
 	}
 }
